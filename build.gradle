@@ -1,9 +1,10 @@
 plugins {
-	id 'org.springframework.boot' version '2.6.6'
+	id 'org.springframework.boot' version '2.6.7'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
 	id 'jacoco'
 	id 'com.github.spotbugs' version '5.0.6'
+	id 'pmd'
 }
 
 group = 'biz.marius'
@@ -72,4 +73,19 @@ spotbugsMain {
 			required = true
 		}
 	}
+}
+
+pmd {
+	consoleOutput = true
+	toolVersion = "6.44.0"
+	rulesMinimumPriority = 5
+	ruleSets = [
+			"category/java/errorprone.xml",
+			"category/java/bestpractices.xml",
+			"category/java/security.xml",
+			"category/java/design.xml"
+	]
+}
+pmdMain {
+	exclude 'biz/marius/**/SecuredSetupApplication.*'
 }

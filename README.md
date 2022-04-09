@@ -20,3 +20,18 @@ To run
 ```
 ./gradlew check
 ```
+
+## File bug scanning - PMD
+https://docs.gradle.org/current/userguide/pmd_plugin.html
+
+Rule-sets refs:
+- https://pmd.github.io/pmd-6.44.0/pmd_userdocs_making_rulesets.html
+- https://github.com/pmd/pmd/tree/master/pmd-java/src/main/resources/rulesets/java
+
+Blog example using external config files _PREFERRED_: 
+- https://github.com/darrendanvers/pmd-gradle-example
+
+To run
+```
+./gradlew check
+```
