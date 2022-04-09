@@ -1,0 +1,62 @@
+plugins {
+	id 'org.springframework.boot' version '2.6.6'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+	id 'jacoco'
+}
+
+group = 'biz.marius'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-webflux'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'io.projectreactor:reactor-test'
+	testImplementation 'org.assertj:assertj-core'
+}
+
+jacoco {
+	toolVersion = "0.8.7"
+	//reportsDir = file("$buildDir/jacoco")
+}
+
+
+test {
+	useJUnitPlatform()
+	finalizedBy jacocoTestReport
+}
+
+jacocoTestReport {
+	dependsOn test
+}
+
+jacocoTestCoverageVerification {
+	violationRules {
+		rule {
+			element = 'CLASS'
+			limit {
+				minimum = 1
+			}
+			excludes = [
+				'biz.marius.securedsetup.excluded.ExcludedService',
+				'biz.marius.securedsetup.SecuredSetupApplication'
+			]
+		}
+		rule {
+			limit {
+				counter = 'INSTRUCTION'
+				value = 'MISSEDRATIO'
+				minimum = 0.3
+			}
+		}
+	}
+}
+
+/*tasks.named('test') {
+	useJUnitPlatform()
+}*/
