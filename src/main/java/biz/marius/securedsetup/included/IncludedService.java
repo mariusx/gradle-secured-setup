@@ -4,4 +4,8 @@ public class IncludedService {
     public void doStuff() {
         System.out.println("true = " + true);
     }
+
+    public Boolean isTrue() {
+        return null;
+    }
 }
