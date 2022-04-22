@@ -35,3 +35,14 @@ To run
 ```
 ./gradlew check
 ```
+
+## OWASP Dependency-Check 
+https://plugins.gradle.org/plugin/org.owasp.dependencycheck
+
+Refs:
+- https://jeremylong.github.io/DependencyCheck/dependency-check-gradle/configuration.html
+
+To run
+```
+./gradlew dependencyCheckAnalyze
+```

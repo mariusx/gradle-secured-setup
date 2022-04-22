@@ -5,6 +5,7 @@ plugins {
 	id 'jacoco'
 	id 'com.github.spotbugs' version '5.0.6'
 	id 'pmd'
+	id "org.owasp.dependencycheck" version "7.0.4.1"
 }
 
 group = 'biz.marius'
@@ -88,4 +89,12 @@ pmd {
 }
 pmdMain {
 	exclude 'biz/marius/**/SecuredSetupApplication.*'
+}
+
+dependencyCheck {
+	cveValidForHours=1
+	// failOnError=true <-- default
+	suppressionFiles = ["${rootDir}/dependency-check/suppressions.xml"]
+	formats = ['HTML', 'JUNIT']
+	failBuildOnCVSS = 4 // medium
 }
